@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIT &amp; BLOW</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation" id="bg-animation"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="title-hit">HIT</span>
+                <span class="title-amp">&amp;</span>
+                <span class="title-blow">BLOW</span>
+            </h1>
+            <p class="subtitle">CPUが選んだ4桁の数字を当てろ！</p>
+        </header>
+
+        <main class="game-area">
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-label">挑戦回数</span>
+                    <span class="stat-value" id="attempt-count">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">ベストスコア</span>
+                    <span class="stat-value" id="best-score">--</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">ステータス</span>
+                    <span class="stat-value" id="game-status">プレイ中</span>
+                </div>
+            </div>
+
+            <div class="input-area" id="input-area">
+                <div class="digit-inputs" id="digit-inputs">
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" id="d0" autocomplete="off">
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" id="d1" autocomplete="off">
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" id="d2" autocomplete="off">
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" id="d3" autocomplete="off">
+                </div>
+                <div class="hint-text" id="hint-text">4桁の数字を入力（各桁は異なる数字）</div>
+                <button class="submit-btn" id="submit-btn">
+                    <span>判　定</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="rule-hint">
+                <span class="rule-item"><span class="dot hit-dot"></span>HIT：数字・位置ともに一致</span>
+                <span class="rule-item"><span class="dot blow-dot"></span>BLOW：数字は合っているが位置が違う</span>
+            </div>
+
+            <div class="history-area">
+                <div class="history-header">
+                    <h2 class="history-title">回答履歴</h2>
+                    <button class="new-game-btn" id="new-game-btn">新しいゲーム</button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <div class="history-empty">まだ回答がありません<br><small>上の入力欄に4桁の数字を入力してください</small></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Win Modal -->
+    <div class="win-modal" id="win-modal" role="dialog" aria-modal="true">
+        <div class="win-content">
+            <div class="confetti-container" id="confetti-container"></div>
+            <div class="win-emoji" id="win-emoji">🎉</div>
+            <h2 class="win-title">正　解！</h2>
+            <p class="win-message" id="win-message"></p>
+            <div class="win-answer-label">答えはこれでした</div>
+            <div class="win-answer" id="win-answer"></div>
+            <button class="play-again-btn" id="play-again-btn">もう一度プレイ</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
